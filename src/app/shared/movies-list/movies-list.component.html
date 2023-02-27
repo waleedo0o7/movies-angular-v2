@@ -1,0 +1,23 @@
+<div class="movies-list-component-wrapper">
+
+  <div class="sidebar-wrapper" *ngIf="hasSidebar">
+    sidebar
+  </div><!-- sidebar-wrapper -->
+
+  <div class="movies-list-wrapper">
+    <div class="{{fullWidth ? 'container-fluid' : 'container'}}">
+
+      <div class="row {{ noGutters ?  'no-gutters' : '' }}">
+        <div [ngClass]="setColumnNumbers(colNum)" *ngFor="let movie of moviesList.results | paginate: { itemsPerPage: paginationSetting.itemsPerPage, currentPage: paginationSetting.currentPage , totalItems: paginationSetting.totalItems < 10000 ? paginationSetting.totalItems : 10000 }">
+          <app-movie-card [movieData]="movie" (movieDataEmitter)="routeToMovieDetails($event)"></app-movie-card>
+        </div>
+      </div>
+
+      <div class="pagination-container">
+        <pagination-controls (pageChange)="getPage(paginationSetting.currentPage = $event)"></pagination-controls>
+      </div>
+
+    </div> <!-- container -->
+  </div><!-- movies-list-wrapper -->
+
+</div><!-- movies-list-component-wrapper -->

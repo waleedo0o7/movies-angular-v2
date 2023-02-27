@@ -1,0 +1,3 @@
+<div *ngIf="moviesTopRatedList.total_results">
+  <app-movies-list (paginationDataEmitter)="getAllTopRatedMovies($event)" [paginationSetting]="{totalItems : moviesTopRatedList.total_results, itemsPerPage : 20, currentPage : 1}" [hasSidebar]="false" [moviesList]="moviesTopRatedList" [fullWidth]="true" [colNum]="3" [noGutters]="false" ></app-movies-list>
+</div>

@@ -1,0 +1,37 @@
+<swiper class="home-intro-slider-wrapper" effect="fade" [loop]="false" [navigation]="true">
+  <ng-template swiperSlide *ngFor="let item of moviesSliderList?.results">
+    <div class="slider-item-wrapper" [ngStyle]="{'background-image': 'url('+imagesLgUrl+item.backdrop_path+')'}">
+      <div class="overlay"></div>
+      <div class="slide-details">
+        <h1 class="title"> {{item.title}} </h1>
+        <!-- <a (click)="routeToMovieDetails(item.id)" class="btn btn-lg btn-primary"> View Details </a> -->
+      </div><!-- slide-details -->
+    </div><!-- slider-item-wrapper -->
+  </ng-template>
+</swiper>
+
+<section id="popular-movies">
+
+  <div class="container">
+    <h2 class="section-headline"> popular movies </h2>
+    <swiper class="swiper-with-pagination" [pagination]="{ clickable: true }" [slidesPerView]="4" [spaceBetween]="10"  [keyboard]="{
+      enabled: true}" [virtual]="true">
+      <ng-template swiperSlide *ngFor="let item of moviesTrendingList?.results">
+        <app-movie-card [movieData]="item" (movieDataEmitter)="routeToMovieDetails($event)"></app-movie-card>
+      </ng-template>
+    </swiper>
+  </div> <!-- container -->
+
+</section>
+
+
+
+<section id="trending-movies">
+
+  <div class="container">
+    <h2 class="section-headline"> Trending movies </h2>
+    <app-movies-list (paginationDataEmitter)="getAllTrendingMovies($event)" [paginationSetting]="{totalItems : moviesTrendingList.total_results, itemsPerPage : 20, currentPage : 1}" [hasSidebar]="false" [moviesList]="moviesTrendingList" [fullWidth]="false" [colNum]="3"></app-movies-list>
+  </div> <!-- container -->
+
+</section>
+
