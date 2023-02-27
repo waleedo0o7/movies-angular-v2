@@ -1,2 +1,8 @@
-<h1> Now Plating Movies </h1>
-<app-movies-list [hasSidebar]="false" [moviesList]="moviesNowPlayingList" [fullWidth]="true" [colNum]="3" [noGutters]="false" ></app-movies-list>
+<div class="page-header m-5 pt-4">
+  <h1 class="text-center color-white text-capetalize"> {{pageTitle}} </h1>
+</div><!-- page-header -->
+
+<app-movies-list (paginationDataEmitter)="getAllNowPlayingMovies($event)"
+  [paginationSetting]="{totalItems : moviesNowPlayingList.total_results, itemsPerPage : 20, currentPage : 1}"
+  [hasSidebar]="false" [moviesList]="moviesNowPlayingList" [fullWidth]="true" [colNum]="3"
+  [noGutters]="false"></app-movies-list>

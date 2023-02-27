@@ -15,6 +15,7 @@ export class SharedService {
   imagesLgUrl = "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/";
   movieDetails!:MovieDetails;
   movieList!: MovieList;
+  mainTitle = ' | Movie App By Waleed Valencia'
 
   constructor(private http:HttpClient) {}
 

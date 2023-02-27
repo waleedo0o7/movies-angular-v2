@@ -10,9 +10,10 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class PopularMoviesComponent implements OnInit {
 
   moviesPopularList!:MovieList;
+  pageTitle = 'Popular Movies'
 
-  getAllPopularMovies(){
-    this.service.getMoviesList(`${this.service.baseUrl}movie/popular`).subscribe( (result:any) => {
+  getAllPopularMovies(pageNum:any){
+    this.service.getMoviesList(`${this.service.baseUrl}movie/popular` , pageNum).subscribe( (result:any) => {
       this.moviesPopularList = result;
     })
   }
@@ -20,7 +21,7 @@ export class PopularMoviesComponent implements OnInit {
   constructor(private service: SharedService) { }
 
   ngOnInit(): void {
-    this.getAllPopularMovies();
+    this.getAllPopularMovies('1');
   }
 
 }

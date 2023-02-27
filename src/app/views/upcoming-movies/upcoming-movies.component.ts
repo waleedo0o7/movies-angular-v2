@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MovieList } from 'src/app/models/main-models';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -10,18 +11,20 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class UpcomingMoviesComponent implements OnInit {
 
   moviesUpcomingList!:MovieList;
+  pageTitle = 'Upcoming Movies'
 
-  constructor(private service: SharedService) {
+  constructor(private title:Title,private service: SharedService) {
   }
 
-  getAllUpcomingMovies(){
-    this.service.getMoviesList(`${this.service.baseUrl}movie/upcoming`).subscribe( (result:any) => {
+  getAllUpcomingMovies(pageNum:any){
+    this.service.getMoviesList(`${this.service.baseUrl}movie/upcoming` , pageNum).subscribe( (result:any) => {
       this.moviesUpcomingList = result;
     })
   }
 
   ngOnInit(): void {
-    this.getAllUpcomingMovies();
+    this.getAllUpcomingMovies('1');
+    this.title.setTitle(`${this.pageTitle} ${this.service.mainTitle}`);
   }
 
 }

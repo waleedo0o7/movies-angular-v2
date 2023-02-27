@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MovieList } from 'src/app/models/main-models';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -10,6 +11,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class TopRatedMoviesComponent implements OnInit {
 
   moviesTopRatedList!: MovieList;
+  pageTitle = 'Top Rated Movies'
 
   getAllTopRatedMovies(pageNum:any) {
     this.service
@@ -23,9 +25,10 @@ export class TopRatedMoviesComponent implements OnInit {
     alert(value);
   }
 
-  constructor(private service: SharedService) {}
+  constructor( private title:Title,private service: SharedService) {}
 
   ngOnInit(): void {
     this.getAllTopRatedMovies("1");
+    this.title.setTitle(`${this.pageTitle} ${this.service.mainTitle}`);
   }
 }

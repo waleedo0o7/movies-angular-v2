@@ -90,7 +90,7 @@ export class HomepageComponent {
   }
 
   ngOnInit() {
-    this.title.setTitle('Home | Movie App By Waleed Valencia');
+    this.title.setTitle(`Home ${this.service.mainTitle}`);
     this.getAllTrendingMovies('1');
 
     this.getMoviesSliderList();
