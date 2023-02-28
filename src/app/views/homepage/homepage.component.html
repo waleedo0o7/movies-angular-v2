@@ -11,27 +11,21 @@
 </swiper>
 
 <section id="popular-movies">
-
   <div class="container">
     <h2 class="section-headline"> popular movies </h2>
-    <swiper class="swiper-with-pagination" [pagination]="{ clickable: true }" [slidesPerView]="4" [spaceBetween]="10"  [keyboard]="{
-      enabled: true}" [virtual]="true">
+    <swiper class="swiper-with-pagination" [config]="swiperConfig">
       <ng-template swiperSlide *ngFor="let item of moviesTrendingList?.results">
         <app-movie-card [movieData]="item" (movieDataEmitter)="routeToMovieDetails($event)"></app-movie-card>
       </ng-template>
     </swiper>
   </div> <!-- container -->
-
 </section>
-
-
 
 <section id="trending-movies">
-
   <div class="container">
     <h2 class="section-headline"> Trending movies </h2>
-    <app-movies-list (paginationDataEmitter)="getAllTrendingMovies($event)" [paginationSetting]="{totalItems : moviesTrendingList.total_results, itemsPerPage : 20, currentPage : 1}" [hasSidebar]="false" [moviesList]="moviesTrendingList" [fullWidth]="false" [colNum]="3"></app-movies-list>
+    <app-movies-list (paginationDataEmitter)="getAllTrendingMovies($event)"
+      [paginationSetting]="{totalItems : moviesTrendingList.total_results, itemsPerPage : 20, currentPage : 1}"
+      [hasSidebar]="false" [moviesList]="moviesTrendingList" [fullWidth]="false" [colNum]="3"></app-movies-list>
   </div> <!-- container -->
-
 </section>
-

@@ -1,6 +1,7 @@
 <div class="card-item-wrapper mb-4" (click)="sendMovieData(movieData)">
   <div class="card-item-content">
-    <img [src]="movieData.poster_path ? imagesSmURL+movieData.poster_path : 'assets/img/not-found-poster.jpg'" class="img-fluid w-100 mb-3" alt="">
-    <h4 class="title"> <span *ngIf="movieData.title"> {{movieData.title}} </span> {{movieData.original_name}} </h4>
+    <img [src]="movieData.poster_path ? imagesSmURL+movieData.poster_path : 'assets/img/not-found-poster.jpg'"
+      class="img-fluid w-100 mb-3" alt="">
+    <h4 class="title"> {{movieData.title}} </h4>
   </div>
 </div>

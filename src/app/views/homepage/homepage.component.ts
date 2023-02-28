@@ -48,7 +48,20 @@ export class HomepageComponent {
     private router: Router
   ) {}
 
+  swiperConfig: any = {
+    slidesPerView: '1.5',
+    spaceBetween: 10,
+    pagination: { clickable: true },
+    breakpoints: {
+      800: {
+        slidesPerView: '5',
+      },
+    },
+  };
+
   moviesTrendingList!: MovieList;
+  imagesLgURL: string = this.service.imagesLgURL;
+
   moviesSliderList: MovieList = {
     results: [],
     total_results: 4,
@@ -63,8 +76,6 @@ export class HomepageComponent {
       });
     }
   }
-
-  imagesLgURL: string = this.service.imagesLgURL;
 
   onSwiper(swiper: any) {
     // console.log(swiper);
