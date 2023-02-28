@@ -15,7 +15,7 @@ export class MovieCardComponent implements OnInit {
 
   @Output() movieDataEmitter = new EventEmitter<MovieDetails>();
 
-  imagesSmUrl:String = this.service.imagesSmUrl;
+  imagesSmURL:String = this.service.imagesSmURL;
   constructor(private service:SharedService , private router : Router) { }
 
   routeToMovieDetails(id:Number){

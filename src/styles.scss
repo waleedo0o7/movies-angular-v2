@@ -6,11 +6,13 @@
 
 :root {
   --mainColor: #db202c;
+  --mainColorDark: #b80814;
 }
 
 body {
-  margin-top: 80px;
+  margin-top: 87px;
   background: #111;
+  font-family: Signika Negative, sans-serif;
 }
 
 a {
@@ -38,11 +40,11 @@ pre {
   left: 0;
 }
 
-.color-white{
-  color: #FFF;
+.color-white {
+  color: #fff;
 }
 
-.text-capetalize{
+.text-capitalize {
   text-transform: capitalize;
 }
 
@@ -58,7 +60,7 @@ section {
 
   &:after {
     content: "";
-    background: #db202c;
+    background: var(--mainColor);
     width: 30px;
     height: 5px;
     position: absolute;
@@ -68,29 +70,10 @@ section {
   }
 }
 
-.page-footer {
-  background: #000;
-  padding: 24px;
-  color: #fff;
-  font-size: 18px;
-  text-transform: capitalize;
-  text-align: center;
-  i {
-    color: #ff2c31;
-    margin: 0 5px;
-  }
-}
-
 .reset-ul {
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-ul.ngx-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .swiper-container {
@@ -127,19 +110,201 @@ ul.ngx-pagination {
     background: var(--mainColor);
   }
 }
+
+.pagination-container {
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  padding: 30px 0;
+  .ngx-pagination {
+    li {
+      display: inline-flex;
+      min-width: 35px;
+      min-height: 35px;
+      justify-content: center;
+      align-items: center;
+      &.small-screen {
+        display: none !important;
+      }
+    }
+    a {
+      color: #f0f0f0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 500px;
+      min-width: 35px;
+      min-height: 35px;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        color: #f0f0f0;
+        background: #2a2a2a;
+        text-decoration: none;
+      }
+    }
+    .current {
+      background: var(--mainColor);
+      border-radius: 500px;
+    }
+  }
+}
+
+.page-footer {
+  background: #000;
+  padding: 24px;
+  color: #fff;
+  font-size: 18px;
+  text-transform: capitalize;
+  text-align: center;
+  i {
+    color: var(--mainColor);
+    margin: 0 5px;
+  }
+}
+
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 1s ease;
+
+  &.loaded{
+    transform: scale(3);
+    opacity : 0
+  }
+
+
+  img{
+      width: 60px;
+  }
+
+
+
+  .lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 35px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 15px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+}
+
+
+
+//////////////////////////// START BOOTSTRAP OVERRIDE STYLE ////////////////////////////
+
+.form-control {
+  border-radius: 3px;
+  background: RGBA(255, 255, 255, 0.1);
+  border: 1px solid #7e7e7e;
+  color: #fff;
+  &:focus {
+    border-color: #7e7e7e;
+    box-shadow: none;
+    background-color: RGBA(255, 255, 255, 0.2);
+    color: #fff;
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--mainColor);
+  border-color: var(--mainColor);
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:hover,
+  &:active {
+    color: #fff;
+    background-color: var(--mainColorDark);
+    border-color: var(--mainColorDark);
+  }
+}
+
+.btn {
+  min-width: 100px;
+  border-radius: 3px;
+}
+
+//////////////////////////// END BOOTSTRAP OVERRIDE STYLE ////////////////////////////
+
 //////////////////////////// START SHARED COMPONENTS STYLE ////////////////////////////
 
 .header-component-wrapper {
   display: flex;
-  padding: 15px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 15px;
 
   .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
     .logo {
       width: 160px;
     }
@@ -154,10 +319,13 @@ ul.ngx-pagination {
         height: 100%;
         justify-content: center;
         align-items: center;
-        padding: 0 15px;
+        padding: 30px 15px;
         font-size: 18px;
         text-transform: capitalize;
         color: #fff;
+        &:hover {
+          background-color: var(--mainColor);
+        }
       }
     }
   }
@@ -176,10 +344,18 @@ ul.ngx-pagination {
   padding: 10px;
   border: 1px solid transparent;
   color: #fff;
+  border-radius: 5px;
+  img {
+    border-radius: 5px;
+  }
   .title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &:hover {
+    border: 1px solid #585858;
   }
 }
 
@@ -242,6 +418,61 @@ ul.ngx-pagination {
         overflow: hidden;
       }
     }
+  }
+}
+
+//////////////////////////// END HOMEPAGE COMPONENT STYLE ////////////////////////////
+
+//////////////////////////// START MOVIE DETAILS COMPONENT STYLE ////////////////////////////
+
+.movie-details-wrapper {
+  .movie-details-container {
+    background: #2a2a2a;
+    padding: 30px 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    position: relative;
+    font-size: 18px;
+    padding: 80px 0;
+    overflow: hidden;
+    .bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-size: cover;
+      background-repeat: repeat-x;
+      background-attachment: fixed;
+      background-position: center top;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: RGBA(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100%;
+    }
+    .genres {
+      .release-date {
+        text-transform: capitalize;
+      }
+    }
+
+    .movie-image {
+      box-shadow: 0 0 50px #000;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+  }
+
+  iframe {
+    border-radius: 10px;
+    overflow: hidden;
   }
 }
 

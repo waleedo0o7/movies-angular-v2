@@ -1,1 +1,5 @@
-<app-movies-list [hasSidebar]="false" [moviesList]="searchedMoviesList" [fullWidth]="false" [colNum]="2" [noGutters]="false" ></app-movies-list>
+<div class="page-header m-5 pt-4">
+  <h1 class="text-center color-white text-capitalize"> Search Results : {{searchedWord}} </h1>
+</div><!-- page-header -->
+
+<app-movies-list [hasSidebar]="false" [moviesList]="searchedMoviesList" [fullWidth]="false" [colNum]="6" [noGutters]="false" ></app-movies-list>

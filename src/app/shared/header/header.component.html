@@ -1,23 +1,21 @@
 <div class="header-component-wrapper">
 
+  <div class="logo-wrapper">
+    <a class="menu-link" routerLink="home"> <img class="img-fluid logo" src="assets/img/logo.svg" alt=""> </a>
+  </div>
 
+  <div class="menu-wrapper">
+    <ul class="menu-list reset-ul">
+      <li class="menu-item"> <a class="menu-link" routerLink="top-rated-movies"> top rated Movies </a></li>
+      <li class="menu-item"> <a class="menu-link" routerLink="now-playing-movies"> now playing Movies</a></li>
+      <li class="menu-item"> <a class="menu-link" routerLink="popular-movies"> popular Movies</a></li>
+      <li class="menu-item"> <a class="menu-link" routerLink="upcoming-movies"> upcoming Movies</a></li>
+    </ul>
+  </div><!-- menu-wrapper -->
 
-    <div class="logo-wrapper">
-      <a class="menu-link" routerLink="home"> <img class="img-fluid logo" src="assets/img/logo.svg" alt=""> </a>
-    </div>
-
-    <div class="menu-wrapper">
-      <ul class="menu-list reset-ul">
-        <li class="menu-item"> <a class="menu-link" routerLink="top-rated-movies"> top rated  </a></li>
-        <li class="menu-item"> <a class="menu-link" routerLink="now-playing-movies"> now playing </a></li>
-        <li class="menu-item"> <a class="menu-link" routerLink="popular-movies"> popular </a></li>
-        <li class="menu-item"> <a class="menu-link" routerLink="upcoming-movies"> upcoming </a></li>
-      </ul>
-    </div><!-- menu-wrapper -->
-
-    <div class="search-wrapper">
-      <input type="text" class="form-control mr-2" #inputRef>
-      <a class="btn btn-primary" (click)="routeToSearchPage(inputRef.value)"> search </a>
-    </div><!-- search-wrapper -->
+  <div class="search-wrapper">
+    <input (keydown)="keyDownFunction($event , inputRef.value)" placeholder="Search For Movie ..." type="text" class="form-control mr-2" #inputRef>
+    <a class="btn btn-primary" (click)="routeToSearchPage(inputRef.value)"> search </a>
+  </div><!-- search-wrapper -->
 
 </div><!-- header-component-wrapper -->

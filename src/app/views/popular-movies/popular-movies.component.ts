@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { MovieList } from 'src/app/models/main-models';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -18,10 +19,11 @@ export class PopularMoviesComponent implements OnInit {
     })
   }
 
-  constructor(private service: SharedService) { }
+  constructor(private title:Title ,private service: SharedService) { }
 
   ngOnInit(): void {
     this.getAllPopularMovies('1');
+    this.title.setTitle(`${this.pageTitle} ${this.service.mainTitle}`);
   }
 
 }

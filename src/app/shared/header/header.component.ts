@@ -20,6 +20,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/search'], {queryParams : {query : searchedWord} } )
   }
 
+  keyDownFunction(event:any , searchedWord:string) {
+    if (event.keyCode === 13) {
+      this.router.navigate(['/search'], {queryParams : {query : searchedWord} } )
+    }
+  }
+
   ngAfterViewInit() {
   }
 

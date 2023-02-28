@@ -51,23 +51,20 @@ export class HomepageComponent {
   moviesTrendingList!: MovieList;
   moviesSliderList: MovieList = {
     results: [],
-    total_results : 4
+    total_results: 4,
   };
 
   getMoviesSliderList() {
-    let ids = [
-      414906 , 507086 , 337404   , 536554 , 631842  , 315162 , 505642
-    ]
+    let ids = [414906, 507086, 337404, 505642, 536554, 631842, 315162];
 
-    for ( let i = 0 ; i < ids.length ; i++ ) {
+    for (let i = 0; i < ids.length; i++) {
       this.service.getMovieDetailsById(ids[i]).subscribe((data: any) => {
         this.moviesSliderList.results.push(data);
       });
     }
-
   }
 
-  imagesLgUrl: string = this.service.imagesLgUrl;
+  imagesLgURL: string = this.service.imagesLgURL;
 
   onSwiper(swiper: any) {
     // console.log(swiper);

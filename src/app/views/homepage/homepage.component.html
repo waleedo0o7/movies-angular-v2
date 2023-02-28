@@ -1,6 +1,6 @@
 <swiper class="home-intro-slider-wrapper" effect="fade" [loop]="false" [navigation]="true">
   <ng-template swiperSlide *ngFor="let item of moviesSliderList?.results">
-    <div class="slider-item-wrapper" [ngStyle]="{'background-image': 'url('+imagesLgUrl+item.backdrop_path+')'}">
+    <div class="slider-item-wrapper" [ngStyle]="{'background-image': 'url('+imagesLgURL+item.backdrop_path+')'}">
       <div class="overlay"></div>
       <div class="slide-details">
         <h1 class="title"> {{item.title}} </h1>

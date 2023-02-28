@@ -15,4 +15,6 @@ export interface MovieDetails {
   vote_average?:number;
   release_date: string;
   overview: string;
+  genres: any[];
+  runtime : any;
 }

@@ -1,3 +1,54 @@
-<p>movie-details works!</p>
+<div class="movie-details-wrapper">
+  <div class="movie-details-container">
+    <div class="bg" style="background-image: url({{imagesCoverURL+movieDetails.poster_path}});">
+    </div>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="movie-image">
+            <img *ngIf="movieDetails" class="img-fluid" [src]="imagesSmURL+movieDetails.poster_path" />
+            <div *ngIf="!movieDetails" class="d-flex justify-content-center align-items-center w-100 animated-bg"
+              style="min-height: 550px">
+              <div class="lds-ellipsis" style="opacity : 0.7">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="movie-details">
+            <h2 class="movie-name"> {{movieDetails.title}} </h2>
+            <div class="genres">
+              Genres :
+              <span class="genre" *ngFor="let genre of movieDetails?.genres , let last = last">
+                {{genre.name}}
+                <span *ngIf="!last">,</span>
+              </span>
+            </div>
+            <div class="release-date"> Release Date : {{movieDetails?.release_date}} </div>
+            <div class="time"> Time : {{movieTime.hours}}H : {{movieTime.minutes}} M </div>
 
-<pre>{{movieDetails | json}}</pre>
+            <div class="overview mt-3">
+              <h5 class="bold mb-0">Overview :</h5>
+              <p> {{movieDetails?.overview}} </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-trailer-wrapper p-5" *ngIf="secureVideoUrl">
+    <div class="container p-5">
+      <iframe width="100%" height="600" [src]="secureVideoUrl" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div><!-- container -->
+  </div>
+
+</div>
