@@ -2,4 +2,7 @@
   <h1 class="text-center color-white text-capitalize"> Search Results : {{searchedWord}} </h1>
 </div><!-- page-header -->
 
-<app-movies-list [hasSidebar]="false" [moviesList]="searchedMoviesList" [fullWidth]="false" [colNum]="6" [noGutters]="false" ></app-movies-list>
+<app-movies-list (paginationDataEmitter)="getSearchedMoviesList($event)"
+  [paginationSetting]="{totalItems : searchedMoviesList.total_results, itemsPerPage : 20, currentPage : 1}"
+  [hasSidebar]="false" [moviesList]="searchedMoviesList" [fullWidth]="false" [colNum]="4"
+  [noGutters]="false"></app-movies-list>

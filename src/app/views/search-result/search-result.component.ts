@@ -10,14 +10,13 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent implements OnInit {
-
   searchedMoviesList!: MovieList;
   searchedWord!: string;
 
   constructor(
     private service: SharedService,
     private activatedRoute: ActivatedRoute,
-    private title:Title
+    private title: Title
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.searchedWord = params['query'];
@@ -25,15 +24,21 @@ export class SearchResultComponent implements OnInit {
     });
   }
 
-  getSearchedMoviesList(pageNum:any) {
+  getSearchedMoviesList(pageNum: any) {
     this.service
-      .getMoviesList(`${this.service.baseUrl}search/movie`, pageNum , this.searchedWord)
+      .getMoviesList(
+        `${this.service.baseUrl}search/movie`,
+        pageNum,
+        this.searchedWord
+      )
       .subscribe((result: any) => {
         this.searchedMoviesList = result;
       });
   }
 
   ngOnInit(): void {
-    this.title.setTitle(`Results ${this.searchedWord}`)
+    this.title.setTitle(
+      `Search : ${this.searchedWord} ${this.service.mainTitle}`
+    );
   }
 }

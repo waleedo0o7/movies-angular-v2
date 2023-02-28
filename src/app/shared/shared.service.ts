@@ -55,6 +55,16 @@ export class SharedService {
     });
   }
 
+  getMovieImagesById(id: any) {
+    let url = `https://api.themoviedb.org/3/movie/${id}/images`;
+
+    return this.http.get(url, {
+      params: {
+        api_key: this.apiKey,
+      },
+    });
+  }
+
   ngOnInit() {
     this.getGenreList();
   }

@@ -22,6 +22,8 @@ import { SwiperModule } from "swiper/angular";
 
 import {NgxPaginationModule} from 'ngx-pagination';
 
+import { LightgalleryModule } from 'lightgallery/angular/11';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    LightgalleryModule
   ],
   providers: [SharedService , Title],
   bootstrap: [AppComponent]

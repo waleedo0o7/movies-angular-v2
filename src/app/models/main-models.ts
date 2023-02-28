@@ -9,7 +9,7 @@ export interface MovieList {
 export interface MovieDetails {
   id: number;
   adult :Boolean;
-  poster_path: string;
+  poster_path?: string;
   title?: string;
   original_name? : string;
   vote_average?:number;

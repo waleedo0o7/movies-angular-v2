@@ -1,4 +1,5 @@
 <div class="movie-details-wrapper">
+
   <div class="movie-details-container">
     <div class="bg" style="background-image: url({{imagesCoverURL+movieDetails.poster_path}});">
     </div>
@@ -8,7 +9,7 @@
         <div class="col-md-5">
           <div class="movie-image">
             <img *ngIf="movieDetails" class="img-fluid" [src]="imagesSmURL+movieDetails.poster_path" />
-            <div *ngIf="!movieDetails" class="d-flex justify-content-center align-items-center w-100 animated-bg"
+            <!-- <div *ngIf="!movieDetails.poster_path" class="d-flex justify-content-center align-items-center w-100 animated-bg"
               style="min-height: 550px">
               <div class="lds-ellipsis" style="opacity : 0.7">
                 <div></div>
@@ -16,7 +17,7 @@
                 <div></div>
                 <div></div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="col-md-7">
@@ -50,5 +51,20 @@
         allowfullscreen></iframe>
     </div><!-- container -->
   </div>
+
+
+  <div class="movie-gallery-wrapper">
+
+
+      <lightgallery class="gallery-wrapper" *ngIf="movieImagesList.length" [settings]="settings" [onInit]="onInit">
+
+        <a class="gallery-item " *ngFor="let image of movieImagesList" [href]="image.file_path">
+          <img class="img-fluid" [src]="image.file_path" />
+        </a>
+
+      </lightgallery>
+
+
+  </div><!-- movie-gallery-wrapper -->
 
 </div>
